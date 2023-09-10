@@ -1,7 +1,9 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { DATABASE_NAME } from './env';
-import { F1Driver } from 'src/usuarios/usuarios.entity';
-import { F1Team } from 'src/productos/productos.entity';
+
+import { Carrito } from 'src/carrito/carrito.entity';
+import { Producto } from 'src/productos/productos.entity';
+import { Usuario } from 'src/usuarios/usuarios.entity';
 
 class ConfigService {
   constructor(private DATABASE_NAME: string | undefined) {}
@@ -11,7 +13,7 @@ class ConfigService {
       type: 'sqlite',
 
       database: 'db/' + this.DATABASE_NAME,
-      entities: [F1Driver, F1Team],
+      entities: [Usuario, Producto, Carrito],
       synchronize: true,
     };
   }

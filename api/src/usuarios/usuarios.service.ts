@@ -1,9 +1,8 @@
-// @packages
 import { InjectRepository } from '@nestjs/typeorm';
 import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-// @scripts
+import { Carrito } from 'src/carrito/carrito.entity';
 import { CreateUsuarioDto, IdentifyUsuarioDto, UpdateUsuarioDto } from './dto';
 import { Usuario } from './usuarios.entity';
 
@@ -11,31 +10,39 @@ import { Usuario } from './usuarios.entity';
 export class UsuariosService {
   constructor(
     @InjectRepository(Usuario)
-    private readonly repository: Repository<Usuario>,
+    private readonly usuarioRepository: Repository<Usuario>,
+    @InjectRepository(Carrito)
+    private readonly carritoRepository: Repository<Carrito>,
   ) {}
 
   async getAllUsuarios(): Promise<Usuario[]> {
-    return await this.repository.find();
+    return await this.usuarioRepository.find();
   }
   async getOneUsuario(id: string): Promise<Usuario> {
-    return await this.repository.findOne({
+    return await this.usuarioRepository.findOne({
       where: { id },
     });
   }
   async identifyUsuario(data: IdentifyUsuarioDto): Promise<Usuario> {
-    const usuario = await this.repository.findOne({
+    const usuario = await this.usuarioRepository.findOne({
       where: { email: data.email, password: data.password },
     });
     delete usuario?.password;
     return usuario;
   }
   async createOneUsuario(data: CreateUsuarioDto) {
-    return await this.repository.save(data);
+    const nuevoUsuario = this.usuarioRepository.create(data);
+    await this.usuarioRepository.save(nuevoUsuario);
+    await this.carritoRepository.save({
+      items: [],
+      usuario: nuevoUsuario,
+    });
+    return nuevoUsuario;
   }
   async updateOneUsuario(id: string, data: UpdateUsuarioDto) {
-    return await this.repository.update({ id }, data);
+    return await this.usuarioRepository.update({ id }, data);
   }
   async deleteOneUsuario(id: string) {
-    return await this.repository.delete({ id });
+    return await this.usuarioRepository.delete({ id });
   }
 }
