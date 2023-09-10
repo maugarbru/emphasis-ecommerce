@@ -1,9 +1,7 @@
-// @packages
 import { InjectRepository } from '@nestjs/typeorm';
 import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-// @scripts
 import { CreateProductoDto, UpdateProductoDto } from './dto';
 import { Producto } from './productos.entity';
 

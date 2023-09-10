@@ -1,4 +1,3 @@
-// @packages
 import {
   Body,
   Controller,
@@ -9,7 +8,6 @@ import {
   Post,
 } from '@nestjs/common';
 
-// @scripts
 import { CreateUsuarioDto, IdentifyUsuarioDto, UpdateUsuarioDto } from './dto';
 import { UsuariosService } from './usuarios.service';
 

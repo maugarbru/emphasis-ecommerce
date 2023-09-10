@@ -1,8 +1,6 @@
-// @packages
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-// @scripts
 import { Usuario } from './usuarios.entity';
 import { UsuariosController } from './usuarios.controller';
 import { UsuariosService } from './usuarios.service';

@@ -1,4 +1,3 @@
-// @packages
 import {
   Body,
   Controller,
@@ -9,7 +8,6 @@ import {
   Post,
 } from '@nestjs/common';
 
-// @scripts
 import { CreateProductoDto, UpdateProductoDto } from './dto';
 import { ProductosService } from './productos.service';
 
