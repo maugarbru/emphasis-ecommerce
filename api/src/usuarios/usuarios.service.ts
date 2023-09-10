@@ -23,9 +23,11 @@ export class UsuariosService {
     });
   }
   async identifyUsuario(data: IdentifyUsuarioDto): Promise<Usuario> {
-    return await this.repository.findOne({
+    const usuario = await this.repository.findOne({
       where: { email: data.email, password: data.password },
     });
+    delete usuario?.password;
+    return usuario;
   }
   async createOneUsuario(data: CreateUsuarioDto) {
     return await this.repository.save(data);

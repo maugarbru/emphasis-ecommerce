@@ -15,5 +15,5 @@ export class Usuario {
   email: string;
 
   @Column('varchar')
-  password: string;
+  password?: string;
 }
