@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import logo from "../../logo.svg";
-import MainLayout from "src/components/MainLayout";
+import logo from '../../logo.svg';
+import MainLayout from 'src/components/MainLayout';
 
 const App = (): React.JSX.Element => {
   return (

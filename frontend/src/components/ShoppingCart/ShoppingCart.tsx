@@ -1,6 +1,6 @@
-import React from "react";
-import { Popover, Transition } from "@headlessui/react";
-import { HiShoppingCart } from "react-icons/hi";
+import React from 'react';
+import { Popover, Transition } from '@headlessui/react';
+import { HiShoppingCart } from 'react-icons/hi';
 
 const ShoppingCart = (): React.JSX.Element => {
   return (

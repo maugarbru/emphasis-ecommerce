@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Popover, Transition } from "@headlessui/react";
-import { HiUser } from "react-icons/hi";
+import React, { useState } from 'react';
+import { Popover, Transition } from '@headlessui/react';
+import { HiUser } from 'react-icons/hi';
 
-import LogIn from "./LogIn";
-import SignUp from "./SignUp";
+import LogIn from './LogIn';
+import SignUp from './SignUp';
 
 const UserSession = (): React.JSX.Element => {
   const [isLogIn, setIsLogin] = useState(true);
@@ -29,12 +29,12 @@ const UserSession = (): React.JSX.Element => {
                 {isLogIn ? <LogIn /> : <SignUp />}
 
                 <div className="flex justify-between items-center">
-                  <p>{`${isLogIn ? "No" : "Ya"} estás registrado?`}</p>
+                  <p>{`${isLogIn ? 'No' : 'Ya'} estás registrado?`}</p>
                   <button
                     className="text-black underline p-2"
                     onClick={() => setIsLogin(!isLogIn)}
                   >
-                    {isLogIn ? "Regístrate" : "Inicia sesión"}
+                    {isLogIn ? 'Regístrate' : 'Inicia sesión'}
                   </button>
                 </div>
               </div>

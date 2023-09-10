@@ -1,12 +1,12 @@
-import React from "react";
-import classnames from "classnames";
-import { useForm, SubmitHandler } from "react-hook-form";
+import React from 'react';
+import classnames from 'classnames';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import {
   HiAtSymbol,
   HiExclamationCircle,
   HiKey,
   HiUserAdd,
-} from "react-icons/hi";
+} from 'react-icons/hi';
 
 type SignUpFields = {
   nombre: string;
@@ -32,13 +32,13 @@ const SignUp = () => {
 
       <div
         className={classnames(
-          "flex justify-start items-center text-black bg-white border rounded-full p-2 w-full",
-          errors.nombre ? "border-red-500" : "border-black"
+          'flex justify-start items-center text-black bg-white border rounded-full p-2 w-full',
+          errors.nombre ? 'border-red-500' : 'border-black',
         )}
       >
         <input
           className="grow"
-          {...register("nombre", { required: true })}
+          {...register('nombre', { required: true })}
           placeholder="Nombre"
         ></input>
         {errors.nombre && (
@@ -47,13 +47,13 @@ const SignUp = () => {
       </div>
       <div
         className={classnames(
-          "flex justify-start items-center text-black bg-white border rounded-full p-2 w-full",
-          errors.apellido ? "border-red-500" : "border-black"
+          'flex justify-start items-center text-black bg-white border rounded-full p-2 w-full',
+          errors.apellido ? 'border-red-500' : 'border-black',
         )}
       >
         <input
           className="grow"
-          {...register("apellido", { required: true })}
+          {...register('apellido', { required: true })}
           placeholder="Apellido"
         ></input>
         {errors.apellido && (
@@ -63,14 +63,14 @@ const SignUp = () => {
 
       <div
         className={classnames(
-          "flex justify-start items-center text-black bg-white border rounded-full p-2",
-          errors.email ? "border-red-500" : "border-black"
+          'flex justify-start items-center text-black bg-white border rounded-full p-2',
+          errors.email ? 'border-red-500' : 'border-black',
         )}
       >
         <HiAtSymbol className="h-5 w-5 mr-2" />
         <input
           className="grow"
-          {...register("email", { required: true })}
+          {...register('email', { required: true })}
           placeholder="Email"
           type="email"
         ></input>
@@ -80,14 +80,14 @@ const SignUp = () => {
       </div>
       <div
         className={classnames(
-          "flex justify-start items-center text-black bg-white border rounded-full p-2",
-          errors.password ? "border-red-500" : "border-black"
+          'flex justify-start items-center text-black bg-white border rounded-full p-2',
+          errors.password ? 'border-red-500' : 'border-black',
         )}
       >
         <HiKey className="h-5 w-5 mr-2" />
         <input
           className="grow"
-          {...register("password", { required: true })}
+          {...register('password', { required: true })}
           placeholder="Password"
           type="password"
         ></input>
