@@ -1,26 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
+    "baseUrl": ".",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "jsx": "react",
+    "module": "ESNext",
     "moduleResolution": "node",
+    "noImplicitAny": true,
+    "outDir": "./build/",
+    "preserveConstEnums": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "sourceMap": true,
+    "target": "es6"
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src/", "custom.d.ts"],
+  "exclude": ["node_modules"]
 }

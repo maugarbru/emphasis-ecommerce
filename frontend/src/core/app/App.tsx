@@ -1,12 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
+import logo from "../../logo.svg";
+import MainLayout from "src/components/MainLayout";
+
+const App = (): React.JSX.Element => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <MainLayout>
+      <div>
+        <img src={logo} className="h-10 w-10" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -18,9 +19,9 @@ function App() {
         >
           Learn React
         </a>
-      </header>
-    </div>
+      </div>
+    </MainLayout>
   );
-}
+};
 
 export default App;
