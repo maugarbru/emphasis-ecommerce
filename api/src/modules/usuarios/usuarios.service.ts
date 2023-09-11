@@ -1,8 +1,7 @@
 import { InjectRepository } from '@nestjs/typeorm';
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-import { Carrito } from '../carritos/carritos.entity';
 import { CreateUsuarioDto, IdentifyUsuarioDto, UpdateUsuarioDto } from './dto';
 import { Usuario } from './usuarios.entity';
 
@@ -11,8 +10,6 @@ export class UsuariosService {
   constructor(
     @InjectRepository(Usuario)
     private readonly usuarioRepository: Repository<Usuario>,
-    @InjectRepository(Carrito)
-    private readonly carritoRepository: Repository<Carrito>,
   ) {}
 
   async getAllUsuarios(): Promise<Usuario[]> {
@@ -31,13 +28,13 @@ export class UsuariosService {
     return usuario;
   }
   async createOneUsuario(data: CreateUsuarioDto) {
-    const nuevoUsuario = this.usuarioRepository.create(data);
-    await this.usuarioRepository.save(nuevoUsuario);
-    await this.carritoRepository.save({
-      items: [],
-      usuario: nuevoUsuario,
+    const usuario = await this.usuarioRepository.findOne({
+      where: { email: data.email },
     });
-    return nuevoUsuario;
+    if (usuario) {
+      throw new BadRequestException('Ya existe un usuario con ese email');
+    }
+    return await this.usuarioRepository.save(data);
   }
   async updateOneUsuario(id: string, data: UpdateUsuarioDto) {
     return await this.usuarioRepository.update({ id }, data);
