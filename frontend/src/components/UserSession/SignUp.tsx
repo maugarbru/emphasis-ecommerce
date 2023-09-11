@@ -123,7 +123,7 @@ const SignUp = ({ changeToLogin }: SignUpProps) => {
         )}
       </div>
       <button
-        className="flex items-center text-white bg-black rounded-lg p-2 shadow-md"
+        className="flex items-center text-white bg-black rounded-lg p-2 shadow-md hover:bg-gray-700"
         type="submit"
       >
         Registrarse

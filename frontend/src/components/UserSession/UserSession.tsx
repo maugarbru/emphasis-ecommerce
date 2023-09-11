@@ -25,7 +25,7 @@ const UserSession = (): React.JSX.Element => {
     <Popover>
       {({ open }) => (
         <>
-          <Popover.Button className="justify-center items-center text-black bg-white border border-black rounded-full p-2 drop-shadow-lg relative inline-block">
+          <Popover.Button className="justify-center items-center text-black bg-white hover:bg-cyan-100 border border-black rounded-full p-2 drop-shadow-lg relative inline-block">
             <HiUser className="h-5 w-5" />
             <span
               className={classNames(
@@ -62,7 +62,7 @@ const UserSession = (): React.JSX.Element => {
                   <div className="flex justify-between items-center">
                     <p>{`${isLogIn ? 'No' : 'Ya'} estás registrado?`}</p>
                     <button
-                      className="text-black underline p-2"
+                      className="text-black underline p-2 hover:text-cyan-500"
                       onClick={() => setIsLogin(!isLogIn)}
                     >
                       {isLogIn ? 'Regístrate' : 'Inicia sesión'}
@@ -75,7 +75,7 @@ const UserSession = (): React.JSX.Element => {
                     <h1 className="text-2xl font-bold">{`${user.nombre} ${user.apellido}`}</h1>
                     <h3 className="text-lg">{user.email}</h3>
                     <button
-                      className="flex items-center text-white bg-red-500 rounded-lg p-2 shadow-md"
+                      className="flex items-center text-white bg-red-500 rounded-lg p-2 shadow-md hover:bg-red-600"
                       onClick={cerrarSesion}
                     >
                       Cerrar sesión

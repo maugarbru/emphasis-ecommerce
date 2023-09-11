@@ -24,7 +24,6 @@ const MainLayout = ({ children }: MainLayoutProps): React.JSX.Element => {
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
-        draggable
         theme="dark"
       />
     </div>

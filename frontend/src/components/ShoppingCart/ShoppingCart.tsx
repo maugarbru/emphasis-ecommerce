@@ -12,7 +12,7 @@ const ShoppingCart = (): React.JSX.Element => {
     <Popover>
       {({ open }) => (
         <>
-          <Popover.Button className="justify-center items-center text-black bg-white border border-black rounded-full p-2 drop-shadow-lg relative inline-block">
+          <Popover.Button className="justify-center items-center text-black bg-white hover:bg-cyan-100 border border-black rounded-full p-2 drop-shadow-lg relative inline-block">
             <HiShoppingCart className="h-5 w-5" />
             {carrito?.length > 0 && (
               <span className="absolute top-1 right-1 inline-block w-5 h-5 transform translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500 text-sm text-white">
