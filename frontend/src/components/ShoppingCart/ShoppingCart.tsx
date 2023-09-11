@@ -1,12 +1,21 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { HiShoppingCart, HiTrash } from 'react-icons/hi';
 import { Popover, Transition } from '@headlessui/react';
-import { HiShoppingCart } from 'react-icons/hi';
+import { toast } from 'react-toastify';
+import { useSelector, useDispatch } from 'react-redux';
 
+import ItemsList from './ItemsList';
 import { RootState } from 'src/core/store';
+import { setCarrito } from 'src/core/store/slices/userData';
 
 const ShoppingCart = (): React.JSX.Element => {
+  const dispatch = useDispatch();
   const { carrito } = useSelector((state: RootState) => state.userData);
+
+  const limpiarCarrito = () => {
+    dispatch(setCarrito([]));
+    toast.success('Carrito limpio');
+  };
 
   return (
     <Popover>
@@ -29,8 +38,23 @@ const ShoppingCart = (): React.JSX.Element => {
             leaveFrom="transform scale-100 opacity-100"
             leaveTo="transform scale-50 opacity-0"
           >
-            <Popover.Panel className="absolute right-2.5 top-2.5 w-96 h-[80vh] origin-top-right bg-white border border-black rounded-lg shadow-lg space-y-4">
-              <div className="flex flex-col w-full h-full justify-between items-center py-10"></div>
+            <Popover.Panel className="absolute right-2.5 top-2.5 w-96 h-[80vh] origin-top-right bg-white border border-black rounded-lg shadow-lg">
+              <div className="flex flex-col w-full h-full justify-between items-center space-y-4">
+                <h1 className="text-2xl font-bold p-5">Carrito de compra</h1>
+                <ItemsList items={carrito} />
+                <button
+                  className="flex justify-center items-center text-white rounded-lg p-1 drop-shadow-lg bg-red-300 hover:bg-red-400 disabled:bg-gray-400"
+                  onClick={limpiarCarrito}
+                  disabled={carrito?.length == 0}
+                >
+                  Limpiar carrito
+                  <HiTrash className="h-5 w-5 ml-2" />
+                </button>
+                <div className="flex justify-between items-center w-full border-black border-t p-5">
+                  <p className="text-2xl font-bold">Total:</p>
+                  <p className="text-2xl font-bold text-cyan-500">$</p>
+                </div>
+              </div>
             </Popover.Panel>
           </Transition>
         </>
