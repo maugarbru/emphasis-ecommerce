@@ -7,9 +7,12 @@ export interface UserDataState {
   carrito?: ItemCarrito[] | null;
 }
 
-const initialState: UserDataState = {};
+const initialState: UserDataState = {
+  user: null,
+  carrito: null,
+};
 
-export const userDataSlice: Slice = createSlice({
+export const userDataSlice: Slice<UserDataState> = createSlice({
   name: 'data',
   initialState,
   reducers: {

@@ -1,16 +1,13 @@
 import React from 'react';
 import { HiSearch } from 'react-icons/hi';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import ShoppingCart from '../ShoppingCart';
 import UserSession from '../UserSession';
-
-import { RootState } from 'src/core/store';
 import { setSearch } from 'src/core/store/slices/data';
 
 const Header = (): React.JSX.Element => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state: RootState) => state.userData);
 
   const filterSearch = (text: string) => {
     dispatch(setSearch(text));
@@ -32,7 +29,7 @@ const Header = (): React.JSX.Element => {
 
         <div className="flex justify-end items-center space-x-4">
           <ShoppingCart />
-          <UserSession user={user} />
+          <UserSession />
         </div>
       </div>
     </header>

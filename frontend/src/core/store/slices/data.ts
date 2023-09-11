@@ -6,7 +6,7 @@ export interface DataState {
 
 const initialState: DataState = {};
 
-export const dataSlice: Slice = createSlice({
+export const dataSlice: Slice<DataState> = createSlice({
   name: 'data',
   initialState,
   reducers: {

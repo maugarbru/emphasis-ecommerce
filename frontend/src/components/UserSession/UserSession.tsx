@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import { Popover, Transition } from '@headlessui/react';
-import { HiUser } from 'react-icons/hi';
-import { useDispatch } from 'react-redux';
+import { HiUser, HiCheckCircle, HiQuestionMarkCircle } from 'react-icons/hi';
+import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import LogIn from './LogIn';
 import SignUp from './SignUp';
 
-import { Usuario } from 'src/core/types';
+import { RootState } from 'src/core/store';
 import { logout } from 'src/core/store/slices/userData';
 
-type UserSessionProps = {
-  user?: Usuario;
-};
-
-const UserSession = ({ user }: UserSessionProps): React.JSX.Element => {
+const UserSession = (): React.JSX.Element => {
   const dispatch = useDispatch();
+  const { user } = useSelector((state: RootState) => state.userData);
   const [isLogIn, setIsLogin] = useState(true);
 
   const cerrarSesion = () => {
@@ -28,8 +25,20 @@ const UserSession = ({ user }: UserSessionProps): React.JSX.Element => {
     <Popover>
       {({ open }) => (
         <>
-          <Popover.Button className="flex justify-center items-center text-black bg-white border border-black rounded-full p-2 drop-shadow-lg relative">
+          <Popover.Button className="justify-center items-center text-black bg-white border border-black rounded-full p-2 drop-shadow-lg relative inline-block">
             <HiUser className="h-5 w-5" />
+            <span
+              className={classNames(
+                'absolute top-1 right-1 inline-block w-5 h-5 transform translate-x-1/2 -translate-y-1/2 rounded-full text-white',
+                user ? 'bg-green-500' : 'bg-amber-500',
+              )}
+            >
+              {user ? (
+                <HiCheckCircle className="h-5 w-5" />
+              ) : (
+                <HiQuestionMarkCircle className="h-5 w-5" />
+              )}
+            </span>
           </Popover.Button>
           <Transition
             show={open}

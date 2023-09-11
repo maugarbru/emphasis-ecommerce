@@ -39,7 +39,7 @@ const LogIn = () => {
       .then((result) => {
         const { data, success, error } = result;
         if (success) {
-          toast.success(`Bienvenido, [${data.nombre} ${data.apellido}]!`);
+          toast.success(`Bienvenido, [${data.nombre} ${data.apellido}] !`);
           dispatch(login(data));
         } else {
           toast.error(error.message);
