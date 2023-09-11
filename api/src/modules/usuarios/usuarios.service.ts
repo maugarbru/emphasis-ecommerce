@@ -2,7 +2,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-import { Carrito } from 'src/carrito/carrito.entity';
+import { Carrito } from '../carritos/carritos.entity';
 import { CreateUsuarioDto, IdentifyUsuarioDto, UpdateUsuarioDto } from './dto';
 import { Usuario } from './usuarios.entity';
 

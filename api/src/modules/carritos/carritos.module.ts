@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { Carrito } from './carrito.entity';
-import { CarritoController } from './carrito.controller';
-import { CarritoService } from './carrito.service';
+import { Carrito } from './carritos.entity';
+import { CarritoController } from './carritos.controller';
+import { CarritoService } from './carritos.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Carrito])],
   controllers: [CarritoController],
   providers: [CarritoService],
 })
-export class UsuariosModule {}
+export class CarritoModule {}

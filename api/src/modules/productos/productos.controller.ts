@@ -26,8 +26,8 @@ export class ProductosController {
   }
 
   @Post()
-  async createOneProducto(@Body() newTeam: CreateProductoDto) {
-    return await this.service.createOneProducto(newTeam);
+  async createOneProducto(@Body() data: CreateProductoDto) {
+    return await this.service.createOneProducto(data);
   }
 
   @Patch(':id')

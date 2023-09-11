@@ -1,7 +1,7 @@
-import { Body, Controller, Get, Param, Patch } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 
-import { UpdateCarritoDto } from './dto';
-import { CarritoService } from './carrito.service';
+import { CreateCarritoDto, UpdateCarritoDto } from './dto';
+import { CarritoService } from './carritos.service';
 
 @Controller('carrito')
 export class CarritoController {
@@ -15,6 +15,11 @@ export class CarritoController {
   @Get(':id')
   async getCarrito(@Param('id') id: string) {
     return await this.service.getCarrito(id);
+  }
+
+  @Post()
+  async createOneProducto(@Body() data: CreateCarritoDto) {
+    return await this.service.createOneCarrito(data);
   }
 
   @Patch(':id')

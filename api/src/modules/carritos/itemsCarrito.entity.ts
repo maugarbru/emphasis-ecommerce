@@ -7,8 +7,8 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import { Carrito } from 'src/carrito/carrito.entity';
-import { Producto } from 'src/productos/productos.entity';
+import { Producto } from 'src/modules/productos/productos.entity';
+import { Carrito } from './carritos.entity';
 
 @Entity()
 export class ItemCarrito {
