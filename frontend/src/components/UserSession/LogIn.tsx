@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import { useDispatch } from 'react-redux';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import {
   HiAtSymbol,
@@ -7,6 +8,10 @@ import {
   HiExclamationCircle,
   HiArrowCircleRight,
 } from 'react-icons/hi';
+import { toast } from 'react-toastify';
+
+import { APIbaseURL } from 'src/core/config';
+import { login } from 'src/core/store/slices/userData';
 
 type LogInFields = {
   email: string;
@@ -19,7 +24,28 @@ const LogIn = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<LogInFields>();
-  const onSubmit: SubmitHandler<LogInFields> = (data) => console.log(data);
+
+  const dispatch = useDispatch();
+
+  const onSubmit: SubmitHandler<LogInFields> = (data) => {
+    const myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+    fetch(APIbaseURL + 'usuarios/login', {
+      method: 'POST',
+      headers: myHeaders,
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        const { data, success, error } = result;
+        if (success) {
+          toast.success(`Bienvenido, [${data.nombre} ${data.apellido}]!`);
+          dispatch(login(data));
+        } else {
+          toast.error(error.message);
+        }
+      });
+  };
 
   return (
     <form

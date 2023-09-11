@@ -1,6 +1,12 @@
 import thunk from 'redux-thunk';
 import { configureStore } from '@reduxjs/toolkit';
 import { createLogger } from 'redux-logger';
+import storage from 'redux-persist/lib/storage';
+import { combineReducers } from 'redux';
+import { persistReducer } from 'redux-persist';
+
+import userDataSlice from './slices/userData';
+import dataSlice from './slices/data';
 
 const logger = createLogger();
 
@@ -9,8 +15,18 @@ const middleware = [
   ...(process.env.NODE_ENV === 'development' ? [logger] : []),
 ];
 
+const reducers = combineReducers({ data: dataSlice, userData: userDataSlice });
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  blacklist: ['data'],
+};
+
+const persistedReducer = persistReducer(persistConfig, reducers);
+
 const store = configureStore({
-  reducer: {},
+  reducer: persistedReducer,
   middleware,
   devTools: true,
 });

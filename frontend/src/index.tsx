@@ -1,15 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
 import './index.css';
+import 'react-toastify/dist/ReactToastify.css';
+
 import App from './core/app';
 import reportWebVitals from './reportWebVitals';
+
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
+import { Provider as ReduxProvider } from 'react-redux';
+
+import store from './core/store';
+const persistor = persistStore(store);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ReduxProvider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </ReduxProvider>
   </React.StrictMode>,
 );
 

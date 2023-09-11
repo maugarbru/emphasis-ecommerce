@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
 
 import Header from '../Header';
 
@@ -17,6 +18,15 @@ const MainLayout = ({ children }: MainLayoutProps): React.JSX.Element => {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        draggable
+        theme="dark"
+      />
     </div>
   );
 };

@@ -7,6 +7,13 @@ import {
   HiKey,
   HiUserAdd,
 } from 'react-icons/hi';
+import { toast } from 'react-toastify';
+
+import { APIbaseURL } from 'src/core/config';
+
+type SignUpProps = {
+  changeToLogin: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 type SignUpFields = {
   nombre: string;
@@ -15,13 +22,33 @@ type SignUpFields = {
   password: string;
 };
 
-const SignUp = () => {
+const SignUp = ({ changeToLogin }: SignUpProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<SignUpFields>();
-  const onSubmit: SubmitHandler<SignUpFields> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<SignUpFields> = (data) => {
+    const myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+    fetch(APIbaseURL + 'usuarios/', {
+      method: 'POST',
+      headers: myHeaders,
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        const { data, success, error } = result;
+        if (success) {
+          changeToLogin(true);
+          toast.success(
+            `Usuario [${data.nombre} ${data.apellido}] creado correctamente! Inicia sesión ahora`,
+          );
+        } else {
+          toast.error(error.message);
+        }
+      });
+  };
 
   return (
     <form
