@@ -32,7 +32,7 @@ export class UsuariosService {
       where: { email: data.email },
     });
     if (usuario) {
-      throw new BadRequestException('Ya existe un usuario con ese email');
+      throw new BadRequestException('Ya existe un USUARIO con ese EMAIL');
     }
     return await this.usuarioRepository.save(data);
   }

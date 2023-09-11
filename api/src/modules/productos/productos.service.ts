@@ -1,6 +1,7 @@
 import { InjectRepository } from '@nestjs/typeorm';
 import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
+import { BadRequestException } from '@nestjs/common';
 
 import { CreateProductoDto, UpdateProductoDto } from './dto';
 import { Producto } from './productos.entity';
@@ -23,6 +24,12 @@ export class ProductosService {
     );
   }
   async createOneProducto(data: CreateProductoDto) {
+    const usuario = await this.repository.findOne({
+      where: { sku: data.sku },
+    });
+    if (usuario) {
+      throw new BadRequestException('Ya existe un PRODUCTO con ese SKU');
+    }
     return await this.repository.save(data);
   }
   async updateOneProducto(id: string, data: UpdateProductoDto) {
