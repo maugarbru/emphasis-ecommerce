@@ -9,7 +9,7 @@ type MainLayoutProps = {
 
 const MainLayout = ({ children }: MainLayoutProps): React.JSX.Element => {
   return (
-    <div className="w-full h-screen bg-gradient-to-tr from-gray-500 to-gray-100">
+    <div className="w-full h-screen bg-gradient-to-tr from-cyan-500 to-cyan-100">
       <div className="flex flex-col w-full justify-center items-start">
         <Header />
         <div className="flex h-full w-full justify-center items-center py-5 px-20">
