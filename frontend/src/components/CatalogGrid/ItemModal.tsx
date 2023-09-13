@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Dialog, Transition } from '@headlessui/react';
 import { HiPlus, HiExclamationCircle, HiRefresh } from 'react-icons/hi';
@@ -18,10 +18,24 @@ type ItemModalProps = {
 const ItemModal = ({ item, open, setOpen }: ItemModalProps) => {
   const dispatch = useDispatch();
   const { carrito } = useSelector((state: RootState) => state.userData);
-  const [cantidad, setCantidad] = useState(1);
 
-  const limiteSuperado = cantidad > item.unidades_disponibles;
-  const estaYaEnElCarrito = carrito.find((i) => i.producto.id === item.id);
+  const [cantidad, setCantidad] = useState(1);
+  const [estaEnElCarrito, setEstaEnElCarrito] = useState(false);
+  const [limiteSuperado, setLimiteSuperado] = useState(false);
+
+  useEffect(() => {
+    if (carrito) {
+      setEstaEnElCarrito(
+        Boolean(carrito.find((i) => i.producto.id === item.id)),
+      );
+    }
+  }, [carrito]);
+
+  useEffect(() => {
+    if (carrito) {
+      setLimiteSuperado(cantidad > item.unidades_disponibles);
+    }
+  }, [cantidad]);
 
   const agregarAlCarrito = () => {
     const itemCarrito: ItemCarrito = {
@@ -58,10 +72,10 @@ const ItemModal = ({ item, open, setOpen }: ItemModalProps) => {
           leaveTo="opacity-0 scale-50"
         >
           <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-            <Dialog.Panel className="mx-auto rounded-lg bg-white w-[500px] overflow-y-auto">
+            <Dialog.Panel className="mx-auto rounded-lg bg-white w-[500px] overflow-y-auto border-black border">
               <Dialog.Title
                 as="div"
-                className="flex justify-between items-center text-2xl font-bold p-5 border-b w-full"
+                className="flex justify-between items-center text-2xl font-bold p-5 w-full"
               >
                 {item.nombre}
                 <p>${item.precio_unitario}</p>
@@ -72,7 +86,7 @@ const ItemModal = ({ item, open, setOpen }: ItemModalProps) => {
                 className="flex flex-col justify-between items-start h-[300px]"
               >
                 <div className="flex flex-col justify-start items-start h-full space-y-4 w-full">
-                  <div className="flex justify-between items-center w-full px-5 py-2">
+                  <div className="flex justify-between items-center w-full px-5 py-2 bg-gray-200 border-black border-y">
                     <p className="text-sm">{`SKU: ${item.sku}`}</p>
                     <p className="text-sm">
                       {`Unidades disponibles: ${item.unidades_disponibles}`}
@@ -108,13 +122,15 @@ const ItemModal = ({ item, open, setOpen }: ItemModalProps) => {
                   <div className="flex flex-col justify-around items-center">
                     <button
                       className={classNames(
-                        'flex justify-center items-center text-white rounded-lg p-1 drop-shadow-lg hover:bg-cyan-600 disabled:bg-gray-400',
-                        estaYaEnElCarrito ? 'bg-cyan-500' : 'bg-green-600',
+                        'flex justify-center items-center text-white rounded-lg p-1 drop-shadow-lg disabled:bg-gray-400',
+                        estaEnElCarrito
+                          ? 'bg-cyan-500 hover:bg-cyan-600'
+                          : 'bg-green-600 hover:bg-green-700',
                       )}
                       onClick={agregarAlCarrito}
                       disabled={limiteSuperado}
                     >
-                      {estaYaEnElCarrito ? (
+                      {estaEnElCarrito ? (
                         <>
                           Actualizar carrito
                           <HiRefresh className="h-5 w-5" />
@@ -126,7 +142,7 @@ const ItemModal = ({ item, open, setOpen }: ItemModalProps) => {
                         </>
                       )}
                     </button>
-                    {estaYaEnElCarrito && (
+                    {estaEnElCarrito && (
                       <p className="italic text-xs">
                         Este item ya está en el carrito
                       </p>

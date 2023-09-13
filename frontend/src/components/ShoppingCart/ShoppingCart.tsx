@@ -1,5 +1,5 @@
 import React from 'react';
-import { HiShoppingCart, HiTrash } from 'react-icons/hi';
+import { HiShoppingCart, HiOutlineTrash } from 'react-icons/hi';
 import { Popover, Transition } from '@headlessui/react';
 import { toast } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux';
@@ -43,16 +43,16 @@ const ShoppingCart = (): React.JSX.Element => {
                 <h1 className="text-2xl font-bold p-5">Carrito de compra</h1>
                 <ItemsList items={carrito} />
                 <button
-                  className="flex justify-center items-center text-white rounded-lg p-1 drop-shadow-lg bg-red-300 hover:bg-red-400 disabled:bg-gray-400"
+                  className="flex justify-center items-center border border-red-500 text-red-500 rounded-lg p-1 drop-shadow-lg hover:bg-red-200 disabled:bg-gray-200 disabled:text-gray-500 disabled:border-gray-500"
                   onClick={limpiarCarrito}
                   disabled={carrito?.length == 0}
                 >
                   Limpiar carrito
-                  <HiTrash className="h-5 w-5 ml-2" />
+                  <HiOutlineTrash className="h-5 w-5 ml-2" />
                 </button>
                 <div className="flex justify-between items-center w-full border-black border-t p-5">
                   <p className="text-2xl font-bold">Total:</p>
-                  <p className="text-2xl font-bold text-cyan-500">$</p>
+                  <p className="text-2xl font-bold text-cyan-500">$0</p>
                 </div>
               </div>
             </Popover.Panel>

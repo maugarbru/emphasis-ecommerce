@@ -43,9 +43,17 @@ const CatalogGrid = (): React.JSX.Element => {
 
   return (
     <div className="w-full h-full grid grid-cols-4 gap-4">
-      {filtered.map((producto) => (
-        <CatalogItem key={producto.id} item={producto} />
-      ))}
+      {filtered.length > 0 ? (
+        filtered.map((producto) => (
+          <CatalogItem key={producto.id} item={producto} />
+        ))
+      ) : (
+        <div className="w-full rounded-lg overflow-hidden bg-white flex flex-col justify-end items-start">
+          <div className="flex justify-between items-end p-5 grow w-full">
+            <p>No hay productos que satisfagan la búsqueda</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
