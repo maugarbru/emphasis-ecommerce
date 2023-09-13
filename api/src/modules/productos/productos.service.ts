@@ -1,7 +1,6 @@
 import { InjectRepository } from '@nestjs/typeorm';
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { BadRequestException } from '@nestjs/common';
 
 import { CreateProductoDto, UpdateProductoDto } from './dto';
 import { Producto } from './productos.entity';
