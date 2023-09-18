@@ -23,7 +23,7 @@ const ShoppingCart = (): React.JSX.Element => {
     const myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
     const body = {
-      items: carrito.map((item) => ({
+      items: carrito?.map((item) => ({
         idProducto: item.producto.id,
         cantidad: item.cantidad,
       })),
