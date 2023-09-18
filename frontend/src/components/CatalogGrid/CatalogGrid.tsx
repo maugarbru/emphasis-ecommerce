@@ -28,7 +28,8 @@ const CatalogGrid = (): React.JSX.Element => {
         } else {
           toast.error(error.message);
         }
-      });
+      })
+      .catch((error) => toast.error(error.message));
   }, []);
 
   useEffect(() => {

@@ -57,7 +57,8 @@ const ListItem = ({ carrito, item }: ListItemProps): React.JSX.Element => {
         } else {
           toast.error(error.message);
         }
-      });
+      })
+      .catch((error) => toast.error(error.message));
   }, [item]);
 
   return (
