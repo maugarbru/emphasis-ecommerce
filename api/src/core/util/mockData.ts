@@ -1,9 +1,9 @@
 import { CreateProductoDto } from 'src/modules/productos/dto';
 import { CreateUsuarioDto } from 'src/modules/usuarios/dto';
 
-export const products: CreateProductoDto[] = [
+export const mockedProducts: CreateProductoDto[] = [
   {
-    sku: 'SKU123',
+    sku: 'EA123',
     nombre: 'Smartphone Galaxy S22',
     descripcion:
       'El último smartphone de Samsung con pantalla AMOLED de alta resolución y cámara de 108 MP.',
@@ -11,7 +11,7 @@ export const products: CreateProductoDto[] = [
     precio_unitario: 999.99,
   },
   {
-    sku: 'SKU456',
+    sku: 'WE456',
     nombre: 'Laptop UltraBook Pro X',
     descripcion:
       'Una laptop ultradelgada y potente con procesador Intel Core i7 y pantalla 4K.',
@@ -19,7 +19,7 @@ export const products: CreateProductoDto[] = [
     precio_unitario: 1499.99,
   },
   {
-    sku: 'SKU789',
+    sku: 'SP789',
     nombre: 'Tablet Nexus 10',
     descripcion:
       'Tablet Android con pantalla de 10 pulgadas y alto rendimiento para entretenimiento y productividad.',
@@ -27,7 +27,7 @@ export const products: CreateProductoDto[] = [
     precio_unitario: 349.99,
   },
   {
-    sku: 'SKU101',
+    sku: 'EA101',
     nombre: 'Smart TV 4K OLED 55 pulgadas',
     descripcion:
       'Televisor OLED con resolución 4K y tecnología de sonido envolvente para una experiencia de visualización inmersiva.',
@@ -35,7 +35,7 @@ export const products: CreateProductoDto[] = [
     precio_unitario: 1299.99,
   },
   {
-    sku: 'SKU202',
+    sku: 'WE202',
     nombre: 'Auriculares Inalámbricos AirPods Pro',
     descripcion:
       'Auriculares inalámbricos con cancelación de ruido y calidad de sonido excepcional.',
@@ -43,7 +43,7 @@ export const products: CreateProductoDto[] = [
     precio_unitario: 199.99,
   },
   {
-    sku: 'SKU303',
+    sku: 'SP303',
     nombre: 'Cámara Mirrorless Sony Alpha A7 III',
     descripcion:
       'Cámara sin espejo con sensor full-frame y capacidad de grabación de video 4K.',
@@ -51,7 +51,7 @@ export const products: CreateProductoDto[] = [
     precio_unitario: 1999.99,
   },
   {
-    sku: 'SKU404',
+    sku: 'EA404',
     nombre: 'Impresora Multifunción HP OfficeJet Pro',
     descripcion:
       'Impresora multifunción con impresión a color de alta calidad y conectividad inalámbrica.',
@@ -59,7 +59,7 @@ export const products: CreateProductoDto[] = [
     precio_unitario: 249.99,
   },
   {
-    sku: 'SKU505',
+    sku: 'WE505',
     nombre: 'Consola de Videojuegos Xbox Series X',
     descripcion:
       'La última consola de Microsoft con gráficos de alta definición y capacidad de juego en 4K.',
@@ -67,7 +67,7 @@ export const products: CreateProductoDto[] = [
     precio_unitario: 499.99,
   },
   {
-    sku: 'SKU606',
+    sku: 'SP606',
     nombre: 'Router Wi-Fi Mesh Linksys Velop',
     descripcion:
       'Sistema de red Wi-Fi Mesh para una cobertura y velocidad excepcionales en toda la casa.',
@@ -75,7 +75,7 @@ export const products: CreateProductoDto[] = [
     precio_unitario: 299.99,
   },
   {
-    sku: 'SKU707',
+    sku: 'EA707',
     nombre: 'Smartwatch Apple Watch Series 7',
     descripcion:
       'Reloj inteligente con seguimiento de salud avanzado y pantalla siempre encendida.',
@@ -84,7 +84,7 @@ export const products: CreateProductoDto[] = [
   },
 ];
 
-export const usuarios: CreateUsuarioDto[] = [
+export const mockedUsers: CreateUsuarioDto[] = [
   {
     nombre: 'Usuario',
     apellido: 'Test',
