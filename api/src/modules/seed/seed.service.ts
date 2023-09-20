@@ -17,6 +17,10 @@ export class SeedService {
   ) {}
 
   async seedData() {
+    await Promise.all([
+      this.productRepository.clear(),
+      this.userRepository.clear(),
+    ]);
     return await Promise.all([
       ...mockedProducts.map((p) => this.productRepository.save(p)),
       ...mockedUsers.map((u) => this.userRepository.save(u)),
