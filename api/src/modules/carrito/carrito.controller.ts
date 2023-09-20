@@ -12,8 +12,8 @@ export class CarritoController {
   @Post('subtotal')
   async getSubtotalItem(@Body() data: SubtotalItemDto) {
     try {
-      const subtotal = await this.service.getSubtotalItem(data);
-      return successResponse({ subtotal });
+      const resultado = await this.service.getSubtotalItem(data);
+      return successResponse(resultado);
     } catch (error) {
       return errorResponse(error);
     }
