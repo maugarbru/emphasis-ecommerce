@@ -7,7 +7,7 @@ export const mockedProducts: CreateProductoDto[] = [
     nombre: 'Arroz Blanco',
     descripcion:
       'Bolsa de 1KG Arroz blanco de grano largo ideal para acompañar tus comidas.',
-    unidades_disponibles: 20,
+    unidades_disponibles: 2000,
     precio_unitario: 4000,
   },
   {
@@ -15,14 +15,14 @@ export const mockedProducts: CreateProductoDto[] = [
     nombre: 'Frijoles Negros',
     descripcion:
       'Bolsa de 1KG Frijoles negros de alta calidad, una excelente fuente de proteína vegetal.',
-    unidades_disponibles: 20,
+    unidades_disponibles: 2000,
     precio_unitario: 2000,
   },
   {
     sku: 'EA003',
     nombre: 'Aceite de Cocina',
     descripcion: 'Aceite de cocina vegetal, perfecto para cocinar y freír.',
-    unidades_disponibles: 6,
+    unidades_disponibles: 16,
     precio_unitario: 12000,
   },
   {

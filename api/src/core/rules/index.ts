@@ -2,6 +2,7 @@ import { Producto, ReglaPrecio, RespuestaRegla } from '../util/types';
 
 export const reglasDisponibles: ReglaPrecio[] = [
   {
+    aplicaDescuento: false,
     nombre: 'Producto Normal',
     identificador: 'EA',
     calcularPrecio: (producto, cantidad) => {
@@ -9,13 +10,15 @@ export const reglasDisponibles: ReglaPrecio[] = [
     },
   },
   {
+    aplicaDescuento: false,
     nombre: 'Producto Peso',
     identificador: 'WE',
     calcularPrecio: (producto, cantidad) => {
-      return producto.precio_unitario * cantidad;
+      return (producto.precio_unitario / 1000) * cantidad;
     },
   },
   {
+    aplicaDescuento: true,
     nombre: 'Producto de Descuento Especial',
     identificador: 'SP',
     calcularPrecio: (producto, cantidad) => {

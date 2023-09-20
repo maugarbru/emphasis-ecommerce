@@ -34,6 +34,7 @@ export type ReglaPrecio = {
   identificador: string;
   nombre: string;
   calcularPrecio: (producto: Producto, cantidad: number) => number;
+  aplicaDescuento: boolean;
 };
 
 export type RespuestaRegla = {
