@@ -67,7 +67,9 @@ const ListItem = ({ carrito, item }: ListItemProps): React.JSX.Element => {
     <>
       <tr>
         <td className="font-bold pl-5">{item.producto.nombre}</td>
-        <td className="text-right">{`$${item.producto.precio_unitario}`}</td>
+        <td className="text-right">{`$${item.producto.precio_unitario.toFixed(
+          2,
+        )}`}</td>
         <td className="flex justify-between items-center text-black mx-5">
           <button
             className={classNames(
@@ -99,11 +101,20 @@ const ListItem = ({ carrito, item }: ListItemProps): React.JSX.Element => {
             <HiPlus className="h-5 w-5" />
           </button>
         </td>
-        <td className="font-bold text-red-500 text-right">{`-$${Math.abs(
-          subtotal - item.cantidad * item.producto.precio_unitario,
-        ).toFixed(3)}`}</td>
+        <td
+          className={classNames(
+            'font-bold text-right',
+            regla?.aplicaDescuento ? 'text-red-500' : 'text-black-500',
+          )}
+        >
+          {regla?.aplicaDescuento
+            ? `-$${Math.abs(
+                subtotal - item.cantidad * item.producto.precio_unitario,
+              ).toFixed(2)}`
+            : ''}
+        </td>
         <td className="font-bold text-cyan-500 text-right pr-5">{`$${subtotal?.toFixed(
-          3,
+          2,
         )}`}</td>
       </tr>
       <tr className="border-b last:border-none">

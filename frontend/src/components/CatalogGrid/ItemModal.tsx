@@ -78,7 +78,7 @@ const ItemModal = ({ item, open, setOpen }: ItemModalProps) => {
                 className="flex justify-between items-center text-2xl font-bold p-5 w-full"
               >
                 {item.nombre}
-                <p>${item.precio_unitario}</p>
+                <p>${item.precio_unitario.toFixed(2)}</p>
               </Dialog.Title>
 
               <Dialog.Description

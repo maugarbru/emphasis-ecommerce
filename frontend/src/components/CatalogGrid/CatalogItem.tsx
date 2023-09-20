@@ -31,7 +31,7 @@ const CatalogItem = ({ item }: CatalogItemProps): React.JSX.Element => {
       >
         <div className="flex flex-col justify-between items-center p-5 grow w-full">
           <h2 className="text-xl font-bold align-left">{item.nombre}</h2>
-          <p>${item.precio_unitario}</p>
+          <p>${item.precio_unitario.toFixed(2)}</p>
         </div>
         {estaEnElCarrito && (
           <span className="absolute top-1 right-1 flex items-center justify-center w-6 h-6 rounded-full bg-white border border-cyan-500 text-cyan-500">

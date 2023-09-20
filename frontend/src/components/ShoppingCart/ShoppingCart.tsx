@@ -74,8 +74,8 @@ const ShoppingCart = (): React.JSX.Element => {
 
                 {carrito?.length ? (
                   <div className="w-full grow overflow-y-auto">
-                    <table className="table-auto w-full">
-                      <thead className="bg-cyan-100 shadow-lg">
+                    <table className="table-fixed w-full">
+                      <thead className="bg-cyan-100">
                         <tr>
                           <th>Producto</th>
                           <th>Precio Unitario</th>
@@ -114,7 +114,7 @@ const ShoppingCart = (): React.JSX.Element => {
                   <div className="flex space-x-4">
                     <p className="text-2xl font-bold">Total:</p>
                     <p className="text-2xl font-bold text-cyan-500">
-                      {`$${total.toFixed(3)}`}
+                      {`$${total.toFixed(2)}`}
                     </p>
                   </div>
                 </div>
