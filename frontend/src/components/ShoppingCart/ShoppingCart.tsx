@@ -27,7 +27,7 @@ const ShoppingCart = (): React.JSX.Element => {
         idProducto: item.producto.id,
         cantidad: item.cantidad,
       })),
-      idUsuario: user.id,
+      idUsuario: user?.id,
     };
     fetch(APIbaseURL + 'carrito/total', {
       method: 'POST',
@@ -80,6 +80,7 @@ const ShoppingCart = (): React.JSX.Element => {
                           <th>Producto</th>
                           <th>Precio Unitario</th>
                           <th>Cantidad</th>
+                          <th>Descuento</th>
                           <th>Subtotal</th>
                         </tr>
                       </thead>
@@ -113,7 +114,7 @@ const ShoppingCart = (): React.JSX.Element => {
                   <div className="flex space-x-4">
                     <p className="text-2xl font-bold">Total:</p>
                     <p className="text-2xl font-bold text-cyan-500">
-                      {`$${total}`}
+                      {`$${total.toFixed(3)}`}
                     </p>
                   </div>
                 </div>
